@@ -21,7 +21,7 @@ Area.tokyo == Area(rawValue: "Tokyo") // true
 # Expanded
 
 ``` swift
-enum Area {
+enum Area: String {
   case tokyo
   case nagoya
   
