@@ -17,14 +17,14 @@ final class CaseInsensitiveTests: XCTestCase {
         assertMacroExpansion(
             """
             @CaseInsensitive
-            enum Area {
+            enum Area: String {
                 case tokyo
                 case nagoya
             }
             """,
             expandedSource: """
             
-            enum Area {
+            enum Area: String {
                 case tokyo
                 case nagoya
             
