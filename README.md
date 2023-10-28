@@ -22,19 +22,18 @@ Area.tokyo == Area(rawValue: "Tokyo") // true
 
 ``` swift
 enum Area: String {
-  case tokyo
-  case nagoya
-  
-  init?(rawValue: String) {
-    let area = Area.allCases.first {
-        rawValue.lowercased() == $0.rawValue.lowercased()
+    case tokyo
+    case nagoya
+    
+    init?(rawValue: String) {
+        switch rawValue.lowercased() {
+        case "tokyo":
+            self = .tokyo
+        case "nagoya":
+            self = .nagoya
+        default:
+            return nil
+        }
     }
-    guard let area else {
-        return nil
-    }
-    self = area
-  }
 }
-  
-extension Area: CaseIterable {}
 ```
