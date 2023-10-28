@@ -29,17 +29,15 @@ final class CaseInsensitiveTests: XCTestCase {
                 case nagoya
             
                 init?(rawValue: String) {
-                    let area = Area.allCases.first {
-                        rawValue.lowercased() == $0.rawValue.lowercased()
-                    }
-                    guard let area else {
+                    switch rawValue.lowercased() {
+                    case "tokyo":
+                        self = .tokyo
+                    case "nagoya":
+                        self = .nagoya
+                    default:
                         return nil
                     }
-                    self = area
                 }
-            }
-
-            extension Area: CaseIterable {
             }
             """,
             macros: testMacros
@@ -50,12 +48,12 @@ final class CaseInsensitiveTests: XCTestCase {
     }
     
     func testIf_CaseInsensitiveMacro_DoesWork() throws {
-        XCTAssertEqual(Area.tokyo, Area(rawValue: "Tokyo"))
+        XCTAssertEqual(Area.Tokyo, Area(rawValue: "tokyo"))
     }
 }
 
 @CaseInsensitive
 enum Area: String {
-    case tokyo
+    case Tokyo
     case nagoya
 }
