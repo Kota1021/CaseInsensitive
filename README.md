@@ -5,7 +5,6 @@ An attached macro that makes an Enum have `init?(rawValue: String)` which ignore
 
 ``` swift
 import CaseInsensitive
-import Foundation
 
 @CaseInsensitive
 enum Area: String {
